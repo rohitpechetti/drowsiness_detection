@@ -1,0 +1,9 @@
+flask
+opencv-python
+dlib
+numpy
+scipy
+pygame
+flask-mail
+ultralytics
+imutils
