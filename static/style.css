@@ -1,0 +1,38 @@
+body {
+    font-family: Arial;
+    background: #f2f2f2;
+}
+.container {
+    width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+}
+input, button {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+}
+button {
+    background: #28a745;
+    color: white;
+    border: none;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.btn-danger {
+    background: red;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

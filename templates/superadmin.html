@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<div class="container">
+
+<h2>Super Admin Panel</h2>
+
+<!-- ================= PENDING APPROVALS ================= -->
+<h3>Pending Approvals</h3>
+
+{% if pending %}
+<table border="1">
+<tr>
+<th>Username</th>
+<th>Email</th>
+<th>Role</th>
+<th>Action</th>
+</tr>
+
+{% for user in pending %}
+<tr>
+<td>{{ user[1] }}</td>
+<td>{{ user[2] }}</td>
+<td>{{ user[3] }}</td>
+<td>
+<a href="/approve/{{ user[0] }}">
+<button style="background:green;color:white;">Approve</button>
+</a>
+</td>
+</tr>
+{% endfor %}
+</table>
+{% else %}
+<p>No pending approvals.</p>
+{% endif %}
+
+<br><br>
+
+<!-- ================= ALL USERS ================= -->
+<h3>All Users</h3>
+
+<table border="1">
+<tr>
+<th>ID</th>
+<th>Username</th>
+<th>Email</th>
+<th>Role</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+{% for user in users %}
+<tr>
+<td>{{ user[0] }}</td>
+<td>{{ user[1] }}</td>
+<td>{{ user[2] }}</td>
+<td>{{ user[3] }}</td>
+<td>
+{% if user[4] == 1 %}
+<span style="color:green;">Approved</span>
+{% else %}
+<span style="color:red;">Pending</span>
+{% endif %}
+</td>
+
+<td>
+{% if user[3] != "superadmin" %}
+<a href="/delete_user/{{ user[0] }}"
+   onclick="return confirm('Are you sure you want to delete this user?')"
+   style="color:red; font-weight:bold;">
+   Delete
+</a>
+{% else %}
+<span style="color:gray;">Protected</span>
+{% endif %}
+</td>
+
+</tr>
+{% endfor %}
+</table>
+
+<br><br>
+
+<a href="/logout" style="color:red;">Logout</a>
+
+</div>
